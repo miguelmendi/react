@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React para Iniciantes</title>
+
+  <!-- Carrega o React, React Dom e Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app">App</div>
+  <!-- Precisa indicar para o Babel que ele deve transpilar o código -->
+  <script type="text/babel">
+    const Button = () => {
+      return <button>Comprar</button>
+    }
+
+    const MainNav = () => {
+      return <nav>
+        <a href="#">Link 1</a>
+        <Button />
+      </nav>
+    }
+
+    const Produtos = () => {
+      const produto1 = "Camisa"
+      const produto2 = "Bermuda"
+
+      function handleCLick(event) {
+        console.log("Comprou: " + event.target.innerText)
+      }
+
+      return <div>
+        <button onClick={handleCLick}>{produto1} - R${Math.random() * 100}</button>
+        <button onClick={handleCLick}>{produto2} - R${Math.random() * 100}</button>
+      </div>
+    }
+
+    const Comprar = () => {
+      const [count, setCount] = React.useState(5)
+      function handleCLick() {
+        setCount(count + 1)
+      }
+
+      return <div>
+        <button onClick={handleCLick}>Comprar: {count}</button>
+        <p>Total: {count}</p>
+        <p>Preço: {count * 250}</p>
+      </div>
+    }
+
+    function App() {
+      return <div>
+        <MainNav />
+        <Produtos />
+        <Comprar />
+      </div>;
+    }
+
+    // Renderiza o componente App no elemento que tiver id = app
+    ReactDOM.render(<App />, document.getElementById('app'));
+  </script>
+</body>
+
+</html>
