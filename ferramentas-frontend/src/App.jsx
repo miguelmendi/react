@@ -4,7 +4,7 @@ import React from 'react';
 // Não utilize CSS externo, use o style para mudar as cores
 // Se a situação estiver ativa pinte de verde, inativa vermelho
 // Se o gasto for maior que 10000 mostre uma mensagem
-const luana = {
+/*const luana = {
   cliente: 'Luana',
   idade: 27,
   compras: [
@@ -25,10 +25,10 @@ const mario = {
     { nome: 'Guitarra', preco: 'R$ 3500' },
   ],
   ativa: false,
-};
+};*/
 
 const App = () => {
-  const dados = mario;
+  /*const dados = mario;
 
   const total = dados.compras
     .map((item) => Number(item.preco.replace('R$', '')))
@@ -46,7 +46,24 @@ const App = () => {
       </p>
       <p>Total: R$ {total}</p>
       {total > 10000 && <p>Você está gastando muito</p>}
-    </div>
+    </div> 
+  );*/
+
+  const livros = [
+    { nome: 'A Game of Thrones', ano: 1996 },
+    { nome: 'A Clash of Kings', ano: 1998 },
+    { nome: 'A Storm of Swords', ano: 2000 },
+  ];
+  return (
+    <ul>
+      {livros
+        .filter(({ ano }) => 1998)
+        .map(({ nome, ano }) => {
+          <li key={nome}>
+            {nome}, {ano}
+          </li>;
+        })}
+    </ul>
   );
 };
 
